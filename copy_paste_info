@@ -1,0 +1,37 @@
+from pyautogui import hotkey, moveTo, click, sleep, locateOnScreen, position, center, move, mouseUp,mouseDown
+
+print('Starting process, please stop using computer')
+sleep(2)
+img_valor_total = 'valor_total.png'
+img_venc = 'venc.png'
+question1 = 'question1.png'
+question2 = 'question2.png'
+
+class GoodManners:
+
+    def search(img, posX, posY, cpyX, cpyY):    ###posX,posY = onde encontra a img
+        img = locateOnScreen(img)               ###cpyX,cpyY = onde estara o valor a ser copiado
+        pos = center(img)
+        moveTo(pos)
+        move(posX, posY)
+        mouseDown(), move(cpyX, cpyY), mouseUp()
+        hotkey('ctrl','c')
+
+    def answer(img, posX, posY):
+        img = locateOnScreen(img)
+        pos = center(img)
+        moveTo(pos)
+        move(posX, posY)
+        click()
+        hotkey('ctrl','v')
+
+def main():
+
+    GoodManners.search(img_valor_total, -30, 20, 50, 0)
+    GoodManners.answer(question1, 0, 70)
+    GoodManners.search(img_venc, -30, 20, 70, 0)
+    GoodManners.answer(question2, 0, 70)
+
+if __name__ == '__main__':
+    main()
+
